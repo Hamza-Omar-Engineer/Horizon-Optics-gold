@@ -122,7 +122,7 @@
             class="w-12 h-12 rounded-xl bg-gradient-to-br from-sky-400 via-purple-500 to-orange-500 p-[1px] flex items-center justify-center neon-blue-glow"
           >
             <img
-              src="goldlogo.jpg"
+              src="1781726496003.png"
               alt="HO Logo"
               class="w-full h-full object-cover rounded-xl"
               onerror="
@@ -540,7 +540,7 @@
         </div>
       </section>
 
-      <!-- الأقسام الجديدة الفاخرة للتصميم والفنون -->
+      <!-- أقسام التصميم والفنون الهندسية -->
       <section id="interior" class="page-section space-y-8 mt-16 md:mt-0">
         <div class="max-w-3xl space-y-4">
           <div
@@ -625,7 +625,7 @@
         </div>
       </section>
 
-      <!-- استمارة طلب مشروع متطورة شاملة كافة الأقسام الجديدة والقديمة -->
+      <!-- استمارة طلب مشروع متطورة وشاملة حقل تحديد المدة الزمنية الجديد -->
       <section id="contact" class="page-section space-y-8 mt-16 md:mt-0">
         <div class="max-w-2xl space-y-2">
           <h2 class="text-2xl sm:text-3xl font-black text-white">
@@ -677,7 +677,7 @@
               <input
                 type="tel"
                 required
-                placeholder="+966 50 000 0000"
+                placeholder="+963 900 000 000"
                 class="w-full bg-[#0a0e17] border border-slate-800 rounded-xl px-4 py-3.5 text-white text-left focus:outline-none focus:border-sky-500/50 transition-colors"
               />
             </div>
@@ -700,6 +700,36 @@
                 <option value="hybrid">مشروع متكامل هجين (برمجة وتصميم)</option>
               </select>
             </div>
+
+            <!-- الحقل الجديد والمطور: خيار تحديد المدة الزمنية لتسليم المشروع -->
+            <div class="space-y-2 md:col-span-2">
+              <label
+                class="text-sm font-semibold text-slate-300 flex items-center gap-2"
+              >
+                <i class="fa-regular fa-clock text-sky-400"></i>
+                <span>المدة الزمنية المفضلة لإنجاز وتسليم المشروع</span>
+              </label>
+              <select
+                required
+                class="w-full bg-[#0a0e17] border border-slate-800 rounded-xl px-4 py-3.5 text-white focus:outline-none focus:border-sky-500/50 transition-colors"
+              >
+                <option value="" disabled selected>
+                  اختر المدة الزمنية المناسبة لك...
+                </option>
+                <option value="urgent">
+                  عاجل جداً (خلال أسبوع إلى 10 أيام)
+                </option>
+                <option value="short">سريع (من أسبوعين إلى شهر)</option>
+                <option value="medium">متوسط ومدروس (من شهر إلى شهرين)</option>
+                <option value="long">
+                  طويل المدى / مشروع ضخم (أكثر من شهرين)
+                </option>
+                <option value="flexible">
+                  مرن (حسب ما يراه الفريق الهندسي مناسباً)
+                </option>
+              </select>
+            </div>
+
             <div class="space-y-2 md:col-span-2">
               <label class="text-sm font-semibold text-slate-300"
                 >تفاصيل ومواصفات المشروع</label
@@ -847,7 +877,7 @@
       function handleSubmit(event) {
         event.preventDefault();
         alert(
-          "تم استلام تفاصيل مشروعك بنجاح! سيقوم فريق Horizon Optics بمراجعة المتطلبات والتواصل معك خلال 24 ساعة.",
+          "تم استلام تفاصيل مشروعك والمدة الزمنية المطلوبة بنجاح! سيقوم فريق Horizon Optics الهندسية والتقنية بمراجعة المتطلبات والتواصل معك خلال 24 ساعة للبدء بالتنفيذ.",
         );
         event.target.reset();
       }
