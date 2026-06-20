@@ -4,27 +4,27 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Horizon Optics | المنظومة التقنية والهندسية المتكاملة</title>
-    <!-- Tailwind CSS -->
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <!-- Font Awesome Icons -->
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     />
-    <!-- Google Fonts Cairo -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Cairo:wght=300;400;600;700;900&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Cairo:wght=300;400;600;700;900&family=Inter:wght=300;400;500;600;700;900&display=swap"
       rel="stylesheet"
     />
 
     <style>
       body {
-        font-family: "Cairo", sans-serif;
+        font-family: "Cairo", "Inter", sans-serif;
         background-color: #0b0f17;
         color: #e2e8f0;
         overflow-x: hidden;
+        transition:
+          direction 0.3s ease,
+          text-align 0.3s ease;
       }
       /* تأثيرات الإضاءة النيونية الفاخرة */
       .neon-blue-glow {
@@ -48,10 +48,10 @@
         color: #a855f7;
         text-shadow: 0 0 10px rgba(168, 85, 247, 0.4);
       }
-      /* زر السهم الفخم المتطور */
+      /* زر السهم الفخم المتطور الهجين */
       .arrow-btn-glow {
-        box-shadow: 0 0 15px rgba(56, 189, 248, 0.4);
-        border: 1px solid rgba(56, 189, 248, 0.3);
+        box-shadow: 0 0 15px rgba(56, 189, 248, 0.3);
+        border: 1px solid rgba(56, 189, 248, 0.25);
       }
       /* انسيابية الانتقال بين الصفحات */
       .page-section {
@@ -88,41 +88,34 @@
     </style>
   </head>
   <body class="flex min-h-screen relative overflow-x-hidden">
-    <!-- غطاء خلفي شفاف ومظلم عند فتح القائمة على الهواتف لزيادة الفخامة والتركيز -->
     <div
       onclick="toggleMenu()"
       id="sidebar-overlay"
       class="hidden fixed inset-0 bg-black/70 z-40 transition-opacity duration-300 md:hidden"
     ></div>
 
-    <!-- زر السهم الفخم العائم - متوافق ذكياً مع الشاشات الكبيرة والصغيرة -->
     <button
       onclick="toggleMenu()"
-      id="menu-toggle-btn"
-      class="fixed top-6 right-6 md:right-auto md:left-6 z-50 w-12 h-12 rounded-xl bg-[#0d131f] text-sky-400 flex items-center justify-center arrow-btn-glow hover:bg-[#1e293b] hover:text-white transition-all duration-300 cursor-pointer"
-      title="التحكم بالقائمة"
+      id="open-sidebar-btn"
+      class="hidden fixed top-5 right-5 z-50 w-10 h-10 rounded-xl bg-[#0d131f]/95 text-sky-400 items-center justify-center arrow-btn-glow hover:bg-[#1e293b] hover:text-white transition-all duration-300 cursor-pointer backdrop-blur-sm"
+      title="فتح القائمة"
     >
-      <i
-        class="fa-solid fa-arrow-right text-lg transition-transform duration-500"
-        id="arrow-icon"
-      ></i>
+      <i class="fa-solid fa-bars text-sm"></i>
     </button>
 
-    <!-- القسم الجانبي (Aside) - تم حل مشكلة الـ RTL والانزلاق بشكل قطعي -->
     <aside
       id="main-sidebar"
-      class="w-80 bg-[#0d131f] border-l border-slate-800 flex flex-col justify-between fixed h-screen right-0 top-0 z-45 shadow-2xl transition-transform duration-300 ease-in-out translate-x-0"
+      class="w-80 bg-[#0d131f] border-slate-800 flex flex-col justify-between fixed h-screen top-0 z-45 shadow-2xl transition-transform duration-300 ease-in-out border-l right-0 translate-x-0"
     >
       <div class="flex flex-col h-[calc(100vh-60px)]">
-        <!-- الشعار والهوية البصرية -->
         <div
-          class="p-6 border-b border-slate-800 flex items-center gap-4 bg-[#0a0e17]"
+          class="p-6 border-b border-slate-800 flex items-center gap-3 bg-[#0a0e17]"
         >
           <div
-            class="w-12 h-12 rounded-xl bg-gradient-to-br from-sky-400 via-purple-500 to-orange-500 p-[1px] flex items-center justify-center neon-blue-glow"
+            class="w-12 h-12 rounded-xl bg-gradient-to-br from-sky-400 via-purple-500 to-orange-500 p-[1px] flex items-center justify-center neon-blue-glow shrink-0"
           >
             <img
-              src="1781726496003.png"
+              src="goldlogo.jpg"
               alt="HO Logo"
               class="w-full h-full object-cover rounded-xl"
               onerror="
@@ -132,126 +125,160 @@
             />
             <span class="hidden text-white font-bold text-lg">HO</span>
           </div>
-          <div>
-            <h1 class="text-xl font-black tracking-wider text-white">HO</h1>
-            <p class="text-xs text-slate-400 font-medium">Horizon Optics</p>
+          <div class="overflow-hidden flex-1">
+            <h1 class="text-xl font-black tracking-wider text-white truncate">
+              HO
+            </h1>
+            <p class="text-xs text-slate-400 font-medium truncate">
+              Horizon Optics
+            </p>
           </div>
+          <button
+            onclick="toggleMenu()"
+            id="menu-toggle-btn"
+            class="w-9 h-9 rounded-xl bg-[#0b0f17] text-sky-400 flex items-center justify-center arrow-btn-glow hover:bg-[#1e293b] hover:text-white transition-all duration-300 cursor-pointer shrink-0"
+            title="التحكم بالقائمة"
+          >
+            <i
+              class="fa-solid fa-arrow-right text-sm transition-transform duration-500"
+              id="arrow-icon"
+            ></i>
+          </button>
         </div>
 
-        <!-- أزرار القائمة الجانبية مجهزة بشريط تمرير داخلي عند كثرة العناصر -->
-        <nav class="p-4 space-y-1.5 overflow-y-auto flex-1">
+        <nav
+          class="p-4 space-y-1.5 overflow-y-auto flex-1 text-right"
+          id="sidebar-nav"
+        >
           <div
             class="text-[10px] font-bold text-slate-500 px-2 uppercase tracking-wider mb-1"
+            data-key="nav-main"
           >
             الرئيسية
           </div>
           <button
             onclick="switchPage('home')"
             id="btn-home"
-            class="nav-btn w-full flex items-center gap-3.5 px-4 py-2.5 rounded-xl text-slate-300 hover:bg-slate-800/50 hover:text-white transition-all text-right font-medium active bg-gradient-to-l from-sky-500/10 to-transparent border-r-4 border-sky-400 text-white cursor-pointer"
+            class="nav-btn w-full flex items-center gap-3.5 px-4 py-2.5 rounded-xl text-slate-300 hover:bg-slate-800/50 hover:text-white transition-all font-medium active bg-gradient-to-l from-sky-500/10 to-transparent border-sky-400 text-white cursor-pointer border-r-4"
           >
             <i class="fa-solid fa-cubes text-sky-400 text-base"></i>
-            <span>الرئيسية والمعرض</span>
+            <span data-key="menu-home">الرئيسية والمعرض</span>
+          </button>
+
+          <button
+            onclick="toggleLanguage()"
+            class="w-full flex items-center justify-between px-4 py-2.5 rounded-xl text-sky-400 bg-sky-500/5 border border-sky-500/10 hover:bg-sky-500/10 hover:text-white transition-all font-bold cursor-pointer"
+          >
+            <div class="flex items-center gap-3.5">
+              <i class="fa-solid fa-earth-americas text-base"></i>
+              <span data-key="menu-lang-label">لغة المنظومة</span>
+            </div>
+            <span
+              id="lang-indicator-text"
+              class="px-2.5 py-0.5 rounded-md bg-[#0b0f17] text-xs font-black tracking-wider border border-slate-800"
+              >English</span
+            >
           </button>
 
           <div
             class="text-[10px] font-bold text-slate-500 px-2 uppercase tracking-wider pt-2 mb-1"
+            data-key="nav-tech"
           >
             الأقسام البرمجية والهندسية
           </div>
           <button
             onclick="switchPage('mobile')"
             id="btn-mobile"
-            class="nav-btn w-full flex items-center gap-3.5 px-4 py-2.5 rounded-xl text-slate-300 hover:bg-slate-800/50 hover:text-white transition-all text-right font-medium cursor-pointer"
+            class="nav-btn w-full flex items-center gap-3.5 px-4 py-2.5 rounded-xl text-slate-300 hover:bg-slate-800/50 hover:text-white transition-all font-medium cursor-pointer"
           >
             <i
               class="fa-solid fa-mobile-screen-button text-sky-400 text-base"
             ></i>
-            <span>تطبيقات الجوال</span>
+            <span data-key="menu-mobile">تطبيقات الجوال</span>
           </button>
           <button
             onclick="switchPage('web')"
             id="btn-web"
-            class="nav-btn w-full flex items-center gap-3.5 px-4 py-2.5 rounded-xl text-slate-300 hover:bg-slate-800/50 hover:text-white transition-all text-right font-medium cursor-pointer"
+            class="nav-btn w-full flex items-center gap-3.5 px-4 py-2.5 rounded-xl text-slate-300 hover:bg-slate-800/50 hover:text-white transition-all font-medium cursor-pointer"
           >
             <i class="fa-solid fa-code text-sky-400 text-base"></i>
-            <span>تطوير المواقع</span>
+            <span data-key="menu-web">تطوير المواقع</span>
           </button>
           <button
             onclick="switchPage('desktop')"
             id="btn-desktop"
-            class="nav-btn w-full flex items-center gap-3.5 px-4 py-2.5 rounded-xl text-slate-300 hover:bg-slate-800/50 hover:text-white transition-all text-right font-medium cursor-pointer"
+            class="nav-btn w-full flex items-center gap-3.5 px-4 py-2.5 rounded-xl text-slate-300 hover:bg-slate-800/50 hover:text-white transition-all font-medium cursor-pointer"
           >
             <i class="fa-solid fa-laptop-code text-sky-400 text-base"></i>
-            <span>برامج سطح المكتب</span>
+            <span data-key="menu-desktop">برامج سطح المكتب</span>
           </button>
           <button
             onclick="switchPage('iot')"
             id="btn-iot"
-            class="nav-btn w-full flex items-center gap-3.5 px-4 py-2.5 rounded-xl text-slate-300 hover:bg-slate-800/50 hover:text-white transition-all text-right font-medium cursor-pointer"
+            class="nav-btn w-full flex items-center gap-3.5 px-4 py-2.5 rounded-xl text-slate-300 hover:bg-slate-800/50 hover:text-white transition-all font-medium cursor-pointer"
           >
             <i class="fa-solid fa-microchip text-orange-400 text-base"></i>
-            <span>المتحكمات و IoT</span>
+            <span data-key="menu-iot">المتحكمات و IoT</span>
           </button>
           <button
             onclick="switchPage('plc')"
             id="btn-plc"
-            class="nav-btn w-full flex items-center gap-3.5 px-4 py-2.5 rounded-xl text-slate-300 hover:bg-slate-800/50 hover:text-white transition-all text-right font-medium cursor-pointer"
+            class="nav-btn w-full flex items-center gap-3.5 px-4 py-2.5 rounded-xl text-slate-300 hover:bg-slate-800/50 hover:text-white transition-all font-medium cursor-pointer"
           >
             <i class="fa-solid fa-industry text-orange-400 text-base"></i>
-            <span>الأتمتة الصناعية PLC</span>
+            <span data-key="menu-plc">الأتمتة الصناعية PLC</span>
           </button>
 
           <div
             class="text-[10px] font-bold text-slate-500 px-2 uppercase tracking-wider pt-2 mb-1"
+            data-key="nav-design"
           >
             أقسام التصميم والفنون الهندسية
           </div>
           <button
             onclick="switchPage('interior')"
             id="btn-interior"
-            class="nav-btn w-full flex items-center gap-3.5 px-4 py-2.5 rounded-xl text-slate-300 hover:bg-slate-800/50 hover:text-white transition-all text-right font-medium cursor-pointer"
+            class="nav-btn w-full flex items-center gap-3.5 px-4 py-2.5 rounded-xl text-slate-300 hover:bg-slate-800/50 hover:text-white transition-all font-medium cursor-pointer"
           >
             <i class="fa-solid fa-couch text-purple-400 text-base"></i>
-            <span>التصميم الداخلي</span>
+            <span data-key="menu-interior">التصميم الداخلي</span>
           </button>
           <button
             onclick="switchPage('exterior')"
             id="btn-exterior"
-            class="nav-btn w-full flex items-center gap-3.5 px-4 py-2.5 rounded-xl text-slate-300 hover:bg-slate-800/50 hover:text-white transition-all text-right font-medium cursor-pointer"
+            class="nav-btn w-full flex items-center gap-3.5 px-4 py-2.5 rounded-xl text-slate-300 hover:bg-slate-800/50 hover:text-white transition-all font-medium cursor-pointer"
           >
             <i class="fa-solid fa-building text-purple-400 text-base"></i>
-            <span>التصميم الخارجي</span>
+            <span data-key="menu-exterior">التصميم الخارجي</span>
           </button>
           <button
             onclick="switchPage('threed')"
             id="btn-threed"
-            class="nav-btn w-full flex items-center gap-3.5 px-4 py-2.5 rounded-xl text-slate-300 hover:bg-slate-800/50 hover:text-white transition-all text-right font-medium cursor-pointer"
+            class="nav-btn w-full flex items-center gap-3.5 px-4 py-2.5 rounded-xl text-slate-300 hover:bg-slate-800/50 hover:text-white transition-all font-medium cursor-pointer"
           >
             <i class="fa-solid fa-bezier-curve text-purple-400 text-base"></i>
-            <span>التصميم ثلاثي الأبعاد</span>
+            <span data-key="menu-threed">التصميم ثلاثي الأبعاد</span>
           </button>
           <button
             onclick="switchPage('advertising')"
             id="btn-advertising"
-            class="nav-btn w-full flex items-center gap-3.5 px-4 py-2.5 rounded-xl text-slate-300 hover:bg-slate-800/50 hover:text-white transition-all text-right font-medium cursor-pointer"
+            class="nav-btn w-full flex items-center gap-3.5 px-4 py-2.5 rounded-xl text-slate-300 hover:bg-slate-800/50 hover:text-white transition-all font-medium cursor-pointer"
           >
             <i class="fa-solid fa-rectangle-ad text-purple-400 text-base"></i>
-            <span>التصميم الإعلاني</span>
+            <span data-key="menu-advertising">التصميم الإعلاني</span>
           </button>
 
           <button
             onclick="switchPage('contact')"
             id="btn-contact"
-            class="nav-btn w-full flex items-center gap-3.5 px-4 py-3 rounded-xl text-slate-300 hover:bg-slate-800/50 hover:text-white transition-all text-right font-medium mt-4 bg-orange-500/5 border border-orange-500/20 text-orange-400 cursor-pointer"
+            class="nav-btn w-full flex items-center gap-3.5 px-4 py-3 rounded-xl text-slate-300 hover:bg-slate-800/50 hover:text-white transition-all font-medium mt-4 bg-orange-500/5 border border-orange-500/20 text-orange-400 cursor-pointer"
           >
             <i class="fa-solid fa-paper-plane text-base"></i>
-            <span>طلب مشروع جديد</span>
+            <span data-key="menu-contact">طلب مشروع جديد</span>
           </button>
         </nav>
       </div>
 
-      <!-- تذييل القائمة الجانبية -->
       <div
         class="p-4 border-t border-slate-800 text-center bg-[#0a0e17] h-[60px] flex items-center justify-center"
       >
@@ -263,17 +290,14 @@
       </div>
     </aside>
 
-    <!-- قسم المحتوى الرئيسي المتجاوب بالكامل -->
     <main
       id="main-content"
-      class="flex-1 min-h-screen flex flex-col justify-between p-4 sm:p-8 lg:p-12 transition-all duration-300 ease-in-out mr-0 md:mr-80"
+      class="flex-1 min-h-screen flex flex-col justify-between p-4 sm:p-8 lg:p-12 transition-all duration-300 ease-in-out md:mr-80 mr-0"
     >
-      <!-- الرئيسية والمعرض -->
       <section
         id="home"
         class="page-section active space-y-12 sm:space-y-16 mt-16 md:mt-0"
       >
-        <!-- البانر الرئيسي الفخم -->
         <div
           class="relative rounded-3xl overflow-hidden p-6 sm:p-8 lg:p-16 bg-gradient-to-br from-[#0f172a] to-[#090d16] border border-slate-800 shadow-2xl flex flex-col justify-center min-h-[400px] sm:min-h-[450px]"
         >
@@ -287,11 +311,13 @@
           <div class="relative z-10 max-w-3xl space-y-6">
             <span
               class="inline-block px-4 py-1.5 rounded-full bg-sky-500/10 text-sky-400 text-xs font-semibold tracking-wider uppercase border border-sky-500/20"
+              data-key="hero-badge"
             >
               منظومة هندسية، برمجية، وفنية متكاملة
             </span>
             <h2
               class="text-3xl sm:text-4xl lg:text-6xl font-black text-white leading-tight"
+              id="hero-title"
             >
               نصنع التميز التقني والجمالي ونشكل
               <span
@@ -299,7 +325,10 @@
                 >الأبعاد</span
               >
             </h2>
-            <p class="text-slate-400 text-base sm:text-lg leading-relaxed">
+            <p
+              class="text-slate-400 text-base sm:text-lg leading-relaxed"
+              data-key="hero-desc"
+            >
               أهلاً بك في Horizon Optics (HO). ندمج قوة الأكواد البرمجية وهندسة
               الأتمتة والـ IoT مع سحر التصاميم المعمارية الفاخرة والإعلانات
               ثلاثية الأبعاد لنقدم لك حلولاً متكاملة تنبض بالحياة.
@@ -309,30 +338,37 @@
                 onclick="switchPage('contact')"
                 class="w-full sm:w-auto px-8 py-4 rounded-xl bg-gradient-to-r from-sky-500 to-purple-600 text-white font-bold hover:shadow-lg hover:shadow-sky-500/20 transition-all flex items-center justify-center gap-3 cursor-pointer"
               >
-                <span>ابدأ مشروعك معنا</span>
-                <i class="fa-solid fa-arrow-left text-sm"></i>
+                <span data-key="hero-btn">ابدأ مشروعك معنا</span>
+                <i
+                  class="fa-solid fa-arrow-left text-sm"
+                  id="hero-btn-icon"
+                ></i>
               </button>
             </div>
           </div>
         </div>
 
-        <!-- المعرض الإبداعي -->
         <div class="space-y-8">
           <div
             class="flex flex-col sm:flex-row justify-between items-start sm:items-end border-b border-slate-800 pb-4 gap-2"
           >
             <div>
-              <h3 class="text-2xl lg:text-3xl font-black text-white">
+              <h3
+                class="text-2xl lg:text-3xl font-black text-white"
+                data-key="gallery-title"
+              >
                 معرض المشاريع المميزة
               </h3>
-              <p class="text-sm text-slate-400 mt-1">
+              <p
+                class="text-sm text-slate-400 mt-1"
+                data-key="gallery-subtitle"
+              >
                 لمحة عن الأنظمة، التطبيقات، واللمسات التصميمية التي طورناها
               </p>
             </div>
           </div>
 
           <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            <!-- مشروع 1 -->
             <div
               class="group bg-[#0d131f] border border-slate-800 rounded-2xl overflow-hidden hover:border-sky-500/30 transition-all shadow-xl flex flex-col justify-between"
             >
@@ -345,6 +381,7 @@
                   ></i>
                   <div
                     class="absolute top-4 right-4 bg-sky-500/20 text-sky-400 text-xs font-bold px-3 py-1 rounded-full border border-sky-400/30"
+                    data-key="proj1-tag"
                   >
                     ويب وأنظمة
                   </div>
@@ -352,10 +389,14 @@
                 <div class="p-6 space-y-3">
                   <h4
                     class="text-lg font-bold text-white group-hover:text-sky-400 transition-colors"
+                    data-key="proj1-title"
                   >
                     تطبيق My Expenses الذكي
                   </h4>
-                  <p class="text-sm text-slate-400 leading-relaxed">
+                  <p
+                    class="text-sm text-slate-400 leading-relaxed"
+                    data-key="proj1-desc"
+                  >
                     تطبيق سحابي متطور لإدارة وحساب المصاريف يعتمد على التخزين
                     المحلي الآمن، مصمم لتوليد تقارير مالية ديناميكية وسلسة.
                   </p>
@@ -364,11 +405,12 @@
               <div
                 class="p-6 pt-0 border-t border-slate-800/50 mt-4 flex justify-between items-center text-xs text-slate-500"
               >
-                <span>التقنيات: JS, LocalStorage, Tailwind</span>
+                <span data-key="proj1-tech"
+                  >التقنيات: JS, LocalStorage, Tailwind</span
+                >
               </div>
             </div>
 
-            <!-- مشروع 2 -->
             <div
               class="group bg-[#0d131f] border border-slate-800 rounded-2xl overflow-hidden hover:border-purple-500/30 transition-all shadow-xl flex flex-col justify-between"
             >
@@ -381,6 +423,7 @@
                   ></i>
                   <div
                     class="absolute top-4 right-4 bg-purple-500/20 text-purple-400 text-xs font-bold px-3 py-1 rounded-full border border-purple-400/30"
+                    data-key="proj2-tag"
                   >
                     معماري داخلي
                   </div>
@@ -388,10 +431,14 @@
                 <div class="p-6 space-y-3">
                   <h4
                     class="text-lg font-bold text-white group-hover:text-purple-400 transition-colors"
+                    data-key="proj2-title"
                   >
                     تصميم فيلا مودرن فاخرة
                   </h4>
-                  <p class="text-sm text-slate-400 leading-relaxed">
+                  <p
+                    class="text-sm text-slate-400 leading-relaxed"
+                    data-key="proj2-desc"
+                  >
                     دراسة معمارية وتوزيع فراغات داخلي لفيلا سكنية تجمع الفخامة
                     مع الاستغلال الذكي للمساحات والإضاءة المخفية الساحرة.
                   </p>
@@ -400,11 +447,12 @@
               <div
                 class="p-6 pt-0 border-t border-slate-800/50 mt-4 flex justify-between items-center text-xs text-slate-500"
               >
-                <span>الأسلوب: Modern Luxury, 3ds Max</span>
+                <span data-key="proj2-tech"
+                  >الأسلوب: Modern Luxury, 3ds Max</span
+                >
               </div>
             </div>
 
-            <!-- مشروع 3 -->
             <div
               class="group bg-[#0d131f] border border-slate-800 rounded-2xl overflow-hidden hover:border-orange-500/30 transition-all shadow-xl flex flex-col justify-between"
             >
@@ -417,6 +465,7 @@
                   ></i>
                   <div
                     class="absolute top-4 right-4 bg-orange-500/20 text-orange-400 text-xs font-bold px-3 py-1 rounded-full border border-orange-400/30"
+                    data-key="proj3-tag"
                   >
                     أنظمة مدمجة
                   </div>
@@ -424,10 +473,14 @@
                 <div class="p-6 space-y-3">
                   <h4
                     class="text-lg font-bold text-white group-hover:text-orange-400 transition-colors"
+                    data-key="proj3-title"
                   >
                     منظومة البيوت والمنشآت الذكية
                   </h4>
-                  <p class="text-sm text-slate-400 leading-relaxed">
+                  <p
+                    class="text-sm text-slate-400 leading-relaxed"
+                    data-key="proj3-desc"
+                  >
                     لوحة تحكم إلكترونية مدمجة تعتمد على معالجات ESP32 للتحكم
                     بالإضاءة والتكييف والأجهزة عن بُعد وبشكل مؤتمت كامل.
                   </p>
@@ -436,14 +489,15 @@
               <div
                 class="p-6 pt-0 border-t border-slate-800/50 mt-4 flex justify-between items-center text-xs text-slate-500"
               >
-                <span>التقنيات: Arduino, ESP32, MQTT</span>
+                <span data-key="proj3-tech"
+                  >التقنيات: Arduino, ESP32, MQTT</span
+                >
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      <!-- الأقسام البرمجية والهندسية الثابتة بدقة -->
       <section id="mobile" class="page-section space-y-8 mt-16 md:mt-0">
         <div class="max-w-3xl space-y-4">
           <div
@@ -453,10 +507,16 @@
               class="fa-solid fa-mobile-screen-button text-sky-400 text-xl"
             ></i>
           </div>
-          <h2 class="text-2xl sm:text-3xl lg:text-4xl font-black text-white">
+          <h2
+            class="text-2xl sm:text-3xl lg:text-4xl font-black text-white"
+            data-key="sec-mobile-title"
+          >
             قسم برمجة تطبيقات الجوال لجميع الأنظمة
           </h2>
-          <p class="text-slate-400 leading-relaxed text-base sm:text-lg">
+          <p
+            class="text-slate-400 leading-relaxed text-base sm:text-lg"
+            data-key="sec-mobile-desc"
+          >
             تطوير تطبيقات هجينة وقوية (Cross-Platform) تعمل على نظامي iOS و
             Android بكفاءة وسرعة فائقة باستخدام أحدث التقنيات لضمان سلاسة
             الأداء.
@@ -471,10 +531,16 @@
           >
             <i class="fa-solid fa-code text-sky-400 text-xl"></i>
           </div>
-          <h2 class="text-2xl sm:text-3xl lg:text-4xl font-black text-white">
+          <h2
+            class="text-2xl sm:text-3xl lg:text-4xl font-black text-white"
+            data-key="sec-web-title"
+          >
             قسم برمجة وتطوير المواقع والأنظمة السحابية
           </h2>
-          <p class="text-slate-400 leading-relaxed text-base sm:text-lg">
+          <p
+            class="text-slate-400 leading-relaxed text-base sm:text-lg"
+            data-key="sec-web-desc"
+          >
             هندسة وبناء مواقع التعريف الاحترافية، المتاجر الإلكترونية، وتطبيقات
             الويب السحابية بتصميم متجاوب وحماية قصوى مع قواعد بيانات منسقة
             وعالية الأداء.
@@ -489,10 +555,16 @@
           >
             <i class="fa-solid fa-laptop-code text-sky-400 text-xl"></i>
           </div>
-          <h2 class="text-2xl sm:text-3xl lg:text-4xl font-black text-white">
+          <h2
+            class="text-2xl sm:text-3xl lg:text-4xl font-black text-white"
+            data-key="sec-desk-title"
+          >
             قسم برمجة وتطوير برامج سطح المكتب
           </h2>
-          <p class="text-slate-400 leading-relaxed text-base sm:text-lg">
+          <p
+            class="text-slate-400 leading-relaxed text-base sm:text-lg"
+            data-key="sec-desk-desc"
+          >
             تطوير برامج مخصصة مبنية للعمل محلياً على أنظمة Windows و macOS
             للأنظمة الطبية، المحاسبية، وإدارة المستودعات الفورية والمغلقة
             بواجهات رسومية فخمة.
@@ -509,10 +581,14 @@
           </div>
           <h2
             class="text-2xl sm:text-3xl lg:text-4xl font-black text-white text-neon-orange"
+            data-key="sec-iot-title"
           >
             قسم المتحكمات الصغيرة وإنترنت الأشياء (IoT)
           </h2>
-          <p class="text-slate-400 leading-relaxed text-base sm:text-lg">
+          <p
+            class="text-slate-400 leading-relaxed text-base sm:text-lg"
+            data-key="sec-iot-desc"
+          >
             ربط الأكواد البرمجية بالعالم الحقيقي. برمجة وتطوير متحكمات Arduino و
             ESP32 لبناء أنظمة الاستشعار والمراقبة الذكية والتحكم عن بعد بشكل
             فوري وآمن.
@@ -529,10 +605,14 @@
           </div>
           <h2
             class="text-2xl sm:text-3xl lg:text-4xl font-black text-white text-neon-orange"
+            data-key="sec-plc-title"
           >
             قسم الأتمتة الصناعية وهندسة الـ PLC
           </h2>
-          <p class="text-slate-400 leading-relaxed text-base sm:text-lg">
+          <p
+            class="text-slate-400 leading-relaxed text-base sm:text-lg"
+            data-key="sec-plc-desc"
+          >
             تطوير وبرمجة أنظمة التحكم المنطقي المبرمج (PLC) للخطوط والآلات
             الصناعية مع محاكاة كاملة وهندسة فائقة لضمان استقرار التشغيل
             والإنتاجية العالية.
@@ -540,7 +620,6 @@
         </div>
       </section>
 
-      <!-- أقسام التصميم والفنون الهندسية -->
       <section id="interior" class="page-section space-y-8 mt-16 md:mt-0">
         <div class="max-w-3xl space-y-4">
           <div
@@ -550,10 +629,14 @@
           </div>
           <h2
             class="text-2xl sm:text-3xl lg:text-4xl font-black text-white text-neon-purple"
+            data-key="sec-int-title"
           >
             قسم التصميم الداخلي (Interior Design)
           </h2>
-          <p class="text-slate-400 leading-relaxed text-base sm:text-lg">
+          <p
+            class="text-slate-400 leading-relaxed text-base sm:text-lg"
+            data-key="sec-int-desc"
+          >
             هندسة الفراغات الداخلية برؤية فنية فاخرة ومتوازنة. نقوم بتوزيع
             الأثاث، اختيار الخامات، تنسيق الألوان، وتصميم الإضاءة لجميع المساحات
             السكنية والتجارية والمكاتب، لتعكس الرقي والراحة المطلقة مع استغلال
@@ -571,10 +654,14 @@
           </div>
           <h2
             class="text-2xl sm:text-3xl lg:text-4xl font-black text-white text-neon-purple"
+            data-key="sec-ext-title"
           >
             قسم التصميم الخارجي (Exterior Design)
           </h2>
-          <p class="text-slate-400 leading-relaxed text-base sm:text-lg">
+          <p
+            class="text-slate-400 leading-relaxed text-base sm:text-lg"
+            data-key="sec-ext-desc"
+          >
             تصميم واجهات معمارية خارجية تخطف الأنظار. نجمع بين الحداثة والأصالة
             الهندسية لتصميم واجهات الفلل، المباني، والمنشآت التجارية باستخدام
             أحدث المواد المتوافقة مع العوامل البيئية، لتعبر الواجهة الخارجية عن
@@ -592,10 +679,14 @@
           </div>
           <h2
             class="text-2xl sm:text-3xl lg:text-4xl font-black text-white text-neon-purple"
+            data-key="sec-3d-title"
           >
             قسم التصميم ثلاثي الأبعاد (3D Visualization & Modeling)
           </h2>
-          <p class="text-slate-400 leading-relaxed text-base sm:text-lg">
+          <p
+            class="text-slate-400 leading-relaxed text-base sm:text-lg"
+            data-key="sec-3d-desc"
+          >
             تجسيد الأفكار والمخططات قبل تنفيذها على أرض الواقع برسم ومحاكاة
             ثلاثية الأبعاد فائقة الدقة (High-End Rendering). تتيح لك هذه الخدمة
             رؤية التفاصيل الدقيقة للأثاث والواجهات والمجسمات الهندسية من كافة
@@ -613,10 +704,14 @@
           </div>
           <h2
             class="text-2xl sm:text-3xl lg:text-4xl font-black text-white text-neon-purple"
+            data-key="sec-adv-title"
           >
             قسم التصميم الإعلاني وصناعة الهويات البصرية
           </h2>
-          <p class="text-slate-400 leading-relaxed text-base sm:text-lg">
+          <p
+            class="text-slate-400 leading-relaxed text-base sm:text-lg"
+            data-key="sec-adv-desc"
+          >
             بناء الانطباع الأول الفاخر لشركتك أو علامتك التجارية. نقوم بتصميم
             الشعارات، البوسترات الاحترافية، بنرات المنصات الرقمية، وإعلانات
             السوشيال ميديا المبتكرة، لضمان وصول رسالتك التسويقية بأسلوب بصري
@@ -625,13 +720,18 @@
         </div>
       </section>
 
-      <!-- استمارة طلب مشروع متطورة وشاملة حقل تحديد المدة الزمنية الجديد -->
       <section id="contact" class="page-section space-y-8 mt-16 md:mt-0">
         <div class="max-w-2xl space-y-2">
-          <h2 class="text-2xl sm:text-3xl font-black text-white">
+          <h2
+            class="text-2xl sm:text-3xl font-black text-white"
+            data-key="form-title"
+          >
             ابدأ رحلتك الإبداعية والتقنية مع HO
           </h2>
-          <p class="text-slate-400 text-sm sm:text-base">
+          <p
+            class="text-slate-400 text-sm sm:text-base"
+            data-key="form-subtitle"
+          >
             يرجى ملء النموذج بدقة، وسيقوم فريقنا بمراجعة المتطلبات والتواصل معك
             فوراً.
           </p>
@@ -649,18 +749,23 @@
             class="relative z-10 grid grid-cols-1 md:grid-cols-2 gap-6"
           >
             <div class="space-y-2">
-              <label class="text-sm font-semibold text-slate-300"
+              <label
+                class="text-sm font-semibold text-slate-300"
+                data-key="lbl-name"
                 >اسم العميل أو الشركة</label
               >
               <input
                 type="text"
+                id="form-input-name"
                 required
                 placeholder="مثال: شركة الأفق الذكية"
                 class="w-full bg-[#0a0e17] border border-slate-800 rounded-xl px-4 py-3.5 text-white focus:outline-none focus:border-sky-500/50 transition-colors"
               />
             </div>
             <div class="space-y-2">
-              <label class="text-sm font-semibold text-slate-300"
+              <label
+                class="text-sm font-semibold text-slate-300"
+                data-key="lbl-email"
                 >البريد الإلكتروني</label
               >
               <input
@@ -671,70 +776,54 @@
               />
             </div>
             <div class="space-y-2">
-              <label class="text-sm font-semibold text-slate-300"
+              <label
+                class="text-sm font-semibold text-slate-300"
+                data-key="lbl-phone"
                 >رقم الهاتف (مع رمز الدولة)</label
               >
               <input
                 type="tel"
                 required
-                placeholder="+963 900 000 000"
+                placeholder="+966 50 000 0000"
                 class="w-full bg-[#0a0e17] border border-slate-800 rounded-xl px-4 py-3.5 text-white text-left focus:outline-none focus:border-sky-500/50 transition-colors"
               />
             </div>
             <div class="space-y-2">
-              <label class="text-sm font-semibold text-slate-300"
+              <label
+                class="text-sm font-semibold text-slate-300"
+                data-key="lbl-service"
                 >القسم أو الخدمة المطلوبة</label
               >
               <select
+                id="form-select-service"
                 class="w-full bg-[#0a0e17] border border-slate-800 rounded-xl px-4 py-3.5 text-white focus:outline-none focus:border-sky-500/50 transition-colors"
-              >
-                <option value="mobile">برمجة تطبيقات الجوال</option>
-                <option value="web">تطوير المواقع والأنظمة السحابية</option>
-                <option value="desktop">برامج سطح المكتب</option>
-                <option value="iot">المتحكمات الصغيرة وإنترنت الأشياء</option>
-                <option value="plc">الأتمتة الصناعية PLC</option>
-                <option value="interior">التصميم الداخلي</option>
-                <option value="exterior">التصميم الخارجي</option>
-                <option value="threed">التصميم ثلاثي الأبعاد</option>
-                <option value="advertising">التصميم الإعلاني والهويات</option>
-                <option value="hybrid">مشروع متكامل هجين (برمجة وتصميم)</option>
-              </select>
+              ></select>
             </div>
 
-            <!-- الحقل الجديد والمطور: خيار تحديد المدة الزمنية لتسليم المشروع -->
             <div class="space-y-2 md:col-span-2">
               <label
                 class="text-sm font-semibold text-slate-300 flex items-center gap-2"
               >
                 <i class="fa-regular fa-clock text-sky-400"></i>
-                <span>المدة الزمنية المفضلة لإنجاز وتسليم المشروع</span>
+                <span data-key="lbl-duration"
+                  >المدة الزمنية المفضلة لإنجاز وتسليم المشروع</span
+                >
               </label>
               <select
+                id="form-select-duration"
                 required
                 class="w-full bg-[#0a0e17] border border-slate-800 rounded-xl px-4 py-3.5 text-white focus:outline-none focus:border-sky-500/50 transition-colors"
-              >
-                <option value="" disabled selected>
-                  اختر المدة الزمنية المناسبة لك...
-                </option>
-                <option value="urgent">
-                  عاجل جداً (خلال أسبوع إلى 10 أيام)
-                </option>
-                <option value="short">سريع (من أسبوعين إلى شهر)</option>
-                <option value="medium">متوسط ومدروس (من شهر إلى شهرين)</option>
-                <option value="long">
-                  طويل المدى / مشروع ضخم (أكثر من شهرين)
-                </option>
-                <option value="flexible">
-                  مرن (حسب ما يراه الفريق الهندسي مناسباً)
-                </option>
-              </select>
+              ></select>
             </div>
 
             <div class="space-y-2 md:col-span-2">
-              <label class="text-sm font-semibold text-slate-300"
+              <label
+                class="text-sm font-semibold text-slate-300"
+                data-key="lbl-details"
                 >تفاصيل ومواصفات المشروع</label
               >
               <textarea
+                id="form-input-details"
                 rows="4"
                 required
                 placeholder="اشرح لنا عن فكرة مشروعك، المساحات المطلوبة للتصميم، أو الأهداف الهندسية البرمجية..."
@@ -747,19 +836,18 @@
                 class="w-full py-4 rounded-xl bg-gradient-to-r from-sky-500 via-purple-500 to-orange-500 text-white font-bold hover:shadow-xl hover:shadow-purple-500/10 transition-all flex items-center justify-center gap-3 cursor-pointer"
               >
                 <i class="fa-solid fa-paper-plane"></i>
-                <span>إرسال طلب المشروع الآن</span>
+                <span data-key="btn-submit">إرسال طلب المشروع الآن</span>
               </button>
             </div>
           </form>
         </div>
       </section>
 
-      <!-- تذييل الصفحة السفلية المتجاوب -->
       <footer
         class="mt-16 pt-8 border-t border-slate-800 flex flex-col sm:flex-row justify-between items-center gap-4 text-sm text-slate-500 text-center sm:text-right"
       >
         <div>
-          <p>
+          <p id="footer-copy">
             &copy; 2026
             <span class="text-slate-300 font-bold">Horizon Optics</span>. جميع
             الحقوق محفوظة.
@@ -776,71 +864,413 @@
       </footer>
     </main>
 
-    <!-- نظام التحكم البرمي الذكي والفاخر -->
     <script>
-      let isMenuOpen = true; // الحالة الافتراضية للشاشات الكبيرة
+      let isMenuOpen = true;
+      let currentLang = "ar";
 
+      const translations = {
+        ar: {
+          "nav-main": "الرئيسية",
+          "menu-home": "الرئيسية والمعرض",
+          "menu-lang-label": "لغة المنظومة",
+          "nav-tech": "الأقسام البرمجية والهندسية",
+          "menu-mobile": "تطبيقات الجوال",
+          "menu-web": "تطوير المواقع",
+          "menu-desktop": "برامج سطح المكتب",
+          "menu-iot": "المتحكمات و IoT",
+          "menu-plc": "الأتمتة الصناعية PLC",
+          "nav-design": "أقسام التصميم والفنون الهندسية",
+          "menu-interior": "التصميم الداخلي",
+          "menu-exterior": "التصميم الخارجي",
+          "menu-threed": "التصميم ثلاثي الأبعاد",
+          "menu-advertising": "التصميم الإعلاني",
+          "menu-contact": "طلب مشروع جديد",
+          "hero-badge": "منظومة هندسية، برمجية، وفنية متكاملة",
+          "hero-title":
+            "نصنع التميز التقني والجمالي ونشكل <span class='text-transparent bg-clip-text bg-gradient-to-r from-sky-400 via-purple-400 to-orange-400'>الأبعاد</span>",
+          "hero-desc":
+            "أهلاً بك في Horizon Optics (HO). ندمج قوة الأكواد البرمجية وهندسة الأتمتة والـ IoT مع سحر التصاميم المعمارية الفاخرة والإعلانات ثلاثية الأبعاد لنقدم لك حلولاً متكاملة تنبض بالحياة.",
+          "hero-btn": "ابدأ مشروعك معنا",
+          "gallery-title": "معرض المشاريع المميزة",
+          "gallery-subtitle":
+            "لمحة عن الأنظمة، التطبيقات، واللمسات التصميمية التي طورناها",
+          "proj1-tag": "ويب وأنظمة",
+          "proj1-title": "تطبيق My Expenses الذكي",
+          "proj1-desc":
+            "تطبيق سحابي متطور لإدارة وحساب المصاريف يعتمد على التخزين المحلي الآمن، مصمم لتوليد تقارير مالية ديناميكية وسلسة.",
+          "proj1-tech": "التقنيات: JS, LocalStorage, Tailwind",
+          "proj2-tag": "معماري داخلي",
+          "proj2-title": "تصميم فيلا مودرن فاخرة",
+          "proj2-desc":
+            "دراسة معمارية وتوزيع فراغات داخلي لفيلا سكنية تجمع الفخامة مع الاستغلال الذكي للمساحات والإضاءة المخفية الساحرة.",
+          "proj2-tech": "الأسلوب: Modern Luxury, 3ds Max",
+          "proj3-tag": "أنظمة مدمجة",
+          "proj3-title": "منظومة البيوت والمنشآت الذكية",
+          "proj3-desc":
+            "لوحة تحكم إلكترونية مدمجة تعتمد على معالجات ESP32 للتحكم بالإضاءة والتكييف والأجهزة عن بُعد وبشكل مؤتمت كامل.",
+          "proj3-tech": "التقنيات: Arduino, ESP32, MQTT",
+          "sec-mobile-title": "قسم برمجة تطبيقات الجوال لجميع الأنظمة",
+          "sec-mobile-desc":
+            "تطوير تطبيقات هجينة وقوية (Cross-Platform) تعمل على نظامي iOS و Android بكفاءة وسرعة فائقة باستخدام أحدث التقنيات لضمان سلاسة الأداء.",
+          "sec-web-title": "قسم برمجة وتطوير المواقع والأنظمة السحابية",
+          "sec-web-desc":
+            "هندسة وبناء مواقع التعريف الاحترافية، المتاجر الإلكترونية، وتطبيقات الويب السحابية بتصميم متجاوب وحماية قصوى مع قواعد بيانات منسقة وعالية الأداء.",
+          "sec-desk-title": "قسم برمجة وتطوير برامج سطح المكتب",
+          "sec-desk-desc":
+            "تطوير برامج مخصصة مبنية للعمل محلياً على أنظمة Windows و macOS للأنظمة الطبية، المحاسبية، وإدارة المستودعات الفورية والمغلقة بواجهات رسومية فخمة.",
+          "sec-iot-title": "قسم المتحكمات الصغيرة وإنترنت الأشياء (IoT)",
+          "sec-iot-desc":
+            "ربط الأكواد البرمجية بالعالم الحقيقي. برمجة وتطوير متحكمات Arduino و ESP32 لبناء أنظمة الاستشعار والمراقبة الذكية والتحكم عن بعد بشكل فوري وآمن.",
+          "sec-plc-title": "قسم الأتمتة الصناعية وهندسة الـ PLC",
+          "sec-plc-desc":
+            "تطوير وبرمجة أنظمة التحكم المنطقي المبرمج (PLC) للخطوط والآلات الصناعية مع محاكاة كاملة وهندسة فائقة لضمان استقرار التشغيل والإنتاجية العالية.",
+          "sec-int-title": "قسم التصميم الداخلي (Interior Design)",
+          "sec-int-desc":
+            "هندسة الفراغات الداخلية برؤية فنية فاخرة ومتوازنة. نقوم بتوزيع الأثاث، اختيار الخامات، تنسيق الألوان، وتصميم الإضاءة لجميع المساحات السكنية والتجارية والمكاتب، لتعكس الرقي والراحة المطلقة مع استغلال مثالي لكل زاوية فراغية.",
+          "sec-ext-title": "قسم التصميم الخارجي (Exterior Design)",
+          "sec-ext-desc":
+            "تصميم واجهات معمارية خارجية تخطف الأنظار. نجمع بين الحداثة والأصالة الهندسية لتصميم واجهات الفلل، المباني، والمنشآت التجارية باستخدام أحدث المواد المتوافقة مع العوامل البيئية، لتعبر الواجهة الخارجية عن عمق وفخامة المكان.",
+          "sec-3d-title":
+            "قسم التصميم ثلاثي الأبعاد (3D Visualization & Modeling)",
+          "sec-3d-desc":
+            "تجسيد الأفكار والمخططات قبل تنفيذها على أرض الواقع برسم ومحاكاة ثلاثية الأبعاد فائقة الدقة (High-End Rendering). تتيح لك هذه الخدمة رؤية التفاصيل الدقيقة للأثاث والواجهات والمجسمات الهندسية من كافة الزوايا وبإضاءة واقعية ساحرة.",
+          "sec-adv-title": "قسم التصميم الإعلاني وصناعة الهويات البصرية",
+          "sec-adv-desc":
+            "بناء الانطباع الأول الفاخر لشركتك أو علامتك التجارية. نقوم بتصميم الشعارات، البوسترات الاحترافية، بنرات المنصات الرقمية، وإعلانات السوشيال ميديا المبتكرة، لضمان وصول رسالتك التسويقية بأسلوب بصري فريد يرسخ في الأذهان.",
+          "form-title": "ابدأ رحلتك الإبداعية والتقنية مع HO",
+          "form-subtitle":
+            "يرجى ملء النموذج بدقة، وسيقوم فريقنا بمراجعة المتطلبات والتواصل معك فوراً.",
+          "lbl-name": "اسم العميل أو الشركة",
+          "lbl-email": "البريد الإلكتروني",
+          "lbl-phone": "رقم الهاتف (مع رمز الدولة)",
+          "lbl-service": "القسم أو الخدمة المطلوبة",
+          "lbl-duration": "المدة الزمنية المفضلة لإنجاز وتسليم المشروع",
+          "lbl-details": "تفاصيل ومواصفات المشروع",
+          "btn-submit": "إرسال طلب المشروع الآن",
+          "alert-success":
+            "تم استلام تفاصيل مشروعك والمدة الزمنية المطلوبة بنجاح! سيقوم فريق Horizon Optics الهندسية والتقنية بمراجعة المتطلبات والتواصل معك خلال 24 ساعة للبدء بالتنفيذ.",
+          "ph-name": "مثال: شركة الأفق الذكية",
+          "ph-details":
+            "اشرح لنا عن فكرة مشروعك، المساحات المطلوبة للتصميم، أو الأهداف الهندسية البرمجية...",
+          "footer-copy":
+            "&copy; 2026 <span class='text-slate-300 font-bold'>Horizon Optics</span>. جميع الحقوق محفوظة.",
+        },
+        en: {
+          "nav-main": "MAIN",
+          "menu-home": "Home & Gallery",
+          "menu-lang-label": "System Language",
+          "nav-tech": "SOFTWARE & ENGINEERING DEPARTMENTS",
+          "menu-mobile": "Mobile Apps Development",
+          "menu-web": "Web Development",
+          "menu-desktop": "Desktop Applications",
+          "menu-iot": "Microcontrollers & IoT",
+          "menu-plc": "Industrial Automation PLC",
+          "nav-design": "ARTISTIC & DESIGN DEPARTMENTS",
+          "menu-interior": "Interior Design",
+          "menu-exterior": "Exterior Design",
+          "menu-threed": "3D Modeling & Visualization",
+          "menu-advertising": "Advertising & Branding",
+          "menu-contact": "Request a New Project",
+          "hero-badge": "Integrated Engineering, Software, and Art System",
+          "hero-title":
+            "We craft technical and aesthetic excellence, shaping <span class='text-transparent bg-clip-text bg-gradient-to-r from-sky-400 via-purple-400 to-orange-400'>Dimensions</span>",
+          "hero-desc":
+            "Welcome to Horizon Optics (HO). We merge the power of programming codes and IoT automation engineering with the magic of luxurious architectural designs and 3D advertising to offer you integrated solutions that pulse with life.",
+          "hero-btn": "Start Your Project With Us",
+          "gallery-title": "Featured Projects Gallery",
+          "gallery-subtitle":
+            "A glimpse of the systems, applications, and design touches we have developed",
+          "proj1-tag": "Web & Systems",
+          "proj1-title": "My Expenses Smart App",
+          "proj1-desc":
+            "An advanced cloud application for managing and calculating expenses that relies on secure local storage, designed to generate dynamic and smooth financial reports.",
+          "proj1-tech": "Technologies: JS, LocalStorage, Tailwind",
+          "proj2-tag": "Interior Architecture",
+          "proj2-title": "Luxury Modern Villa Design",
+          "proj2-desc":
+            "An architectural study and internal spatial distribution for a residential villa that combines luxury with clever use of space and enchanting hidden lighting.",
+          "proj2-tech": "Style: Modern Luxury, 3ds Max",
+          "proj3-tag": "Embedded Systems",
+          "proj3-title": "Smart Homes & Facilities System",
+          "proj3-desc":
+            "An embedded electronic control panel based on ESP32 microprocessors to control lighting, air conditioning, and devices remotely and in a fully automated manner.",
+          "proj3-tech": "Technologies: Arduino, ESP32, MQTT",
+          "sec-mobile-title": "Mobile Applications Department for All Systems",
+          "sec-mobile-desc":
+            "Developing powerful Cross-Platform mobile applications that work on iOS and Android with high efficiency and speed using the latest technologies to ensure seamless performance.",
+          "sec-web-title": "Web Development & Cloud Systems Department",
+          "sec-web-desc":
+            "Engineering and building professional corporate websites, e-commerce stores, and cloud web applications with responsive design and maximum protection with optimized high-performance databases.",
+          "sec-desk-title": "Desktop Applications Development Department",
+          "sec-desk-desc":
+            "Developing customized software built to run locally on Windows and macOS for medical, accounting, and instant closed warehouse management systems with luxurious graphical interfaces.",
+          "sec-iot-title":
+            "Microcontrollers & Internet of Things (IoT) Department",
+          "sec-iot-desc":
+            "Connecting programming codes to the real world. Programming and developing Arduino and ESP32 microcontrollers to build smart sensing, monitoring, and real-time remote control systems securely.",
+          "sec-plc-title": "Industrial Automation & PLC Engineering Department",
+          "sec-plc-desc":
+            "Developing and programming Programmable Logic Control (PLC) systems for factory production lines and industrial machinery with full simulation and superb engineering to ensure operational stability and high productivity.",
+          "sec-int-title": "Interior Design Department",
+          "sec-int-desc":
+            "Engineering internal spaces with a luxurious and balanced artistic vision. We distribute furniture, select premium materials, harmonize colors, and design lighting for all residential, commercial spaces, and offices to reflect ultimate elegance and comfort while perfectly utilizing every corner.",
+          "sec-ext-title": "Exterior Design Department",
+          "sec-ext-desc":
+            "Designing eye-catching exterior architectural facades. We combine modernity with engineering authenticity to design facades for villas, buildings, and commercial facilities using the latest eco-friendly materials, making the exterior facade express the luxury of the place.",
+          "sec-3d-title": "3D Visualization & Modeling Department",
+          "sec-3d-desc":
+            "Materializing concepts and blue-prints before actual execution using high-end 3D rendering and simulation. This service allows you to view the precise details of furniture, facades, and engineering objects from all angles with magnificent realistic lighting.",
+          "sec-adv-title": "Advertising Design & Visual Identity Department",
+          "sec-adv-desc":
+            "Building the first luxurious impression for your company or brand. We design logos, professional posters, digital banners, and innovative social media advertisements to ensure your marketing message reaches targets with a unique visual style.",
+          "form-title": "Start Your Creative & Technical Journey With HO",
+          "form-subtitle":
+            "Please fill out the form accurately, and our team will review the requirements and contact you immediately.",
+          "lbl-name": "Client or Company Name",
+          "lbl-email": "Email Address",
+          "lbl-phone": "Phone Number (with Country Code)",
+          "lbl-service": "Requested Department or Service",
+          "lbl-duration": "Preferred Duration for Project Delivery",
+          "lbl-details": "Project Details & Specifications",
+          "btn-submit": "Send Project Request Now",
+          "alert-success":
+            "Your project details and preferred timeline have been received successfully! The Horizon Optics technical and engineering team will review your requirements and reach out within 24 hours to kickstart development.",
+          "ph-name": "e.g., Horizon Smart Company",
+          "ph-details":
+            "Tell us about your project idea, required spaces for design, or engineering and software goals...",
+          "footer-copy":
+            "&copy; 2026 <span class='text-slate-300 font-bold'>Horizon Optics</span>. All Rights Reserved.",
+        },
+      };
+
+      const dropdownOptions = {
+        ar: {
+          services: [
+            { value: "mobile", text: "برمجة تطبيقات الجوال" },
+            { value: "web", text: "تطوير المواقع والأنظمة السحابية" },
+            { value: "desktop", text: "برامج سطح المكتب" },
+            { value: "iot", text: "المتحكمات الصغيرة وإنترنت الأشياء" },
+            { value: "plc", text: "الأتمتة الصناعية PLC" },
+            { value: "interior", text: "التصميم الداخلي" },
+            { value: "exterior", text: "التصميم الخارجي" },
+            { value: "threed", text: "التصميم ثلاثي الأبعاد" },
+            { value: "advertising", text: "التصميم الإعلاني والهويات" },
+            { value: "hybrid", text: "مشروع متكامل هجين (برمجة وتصميم)" },
+          ],
+          durations: [
+            {
+              value: "",
+              text: "اختر المدة الزمنية المناسبة لك...",
+              disabled: true,
+              selected: true,
+            },
+            { value: "urgent", text: "عاجل جداً (خلال أسبوع إلى 10 أيام)" },
+            { value: "short", text: "سريع (من أسبوعين إلى شهر)" },
+            { value: "medium", text: "متوسط ومدروس (من شهر إلى شهرين)" },
+            { value: "long", text: "طويل المدى / مشروع ضخم (أكثر من شهرين)" },
+            {
+              value: "flexible",
+              text: "مرن (حسب ما يراه الفريق الهندسي مناسباً)",
+            },
+          ],
+        },
+        en: {
+          services: [
+            { value: "mobile", text: "Mobile Applications Development" },
+            { value: "web", text: "Web & Cloud Systems Development" },
+            { value: "desktop", text: "Desktop Applications Software" },
+            { value: "iot", text: "Microcontrollers & Internet of Things" },
+            { value: "plc", text: "Industrial Automation PLC" },
+            { value: "interior", text: "Interior Design" },
+            { value: "exterior", text: "Exterior Design" },
+            { value: "threed", text: "3D Visualization & Modeling" },
+            { value: "advertising", text: "Advertising & Branding Design" },
+            {
+              value: "hybrid",
+              text: "Integrated Hybrid Project (Dev & Design)",
+            },
+          ],
+          durations: [
+            {
+              value: "",
+              text: "Select preferred delivery duration...",
+              disabled: true,
+              selected: true,
+            },
+            { value: "urgent", text: "Very Urgent (Within 1 week to 10 days)" },
+            { value: "short", text: "Fast Rate (From 2 weeks to 1 month)" },
+            { value: "medium", text: "Medium & Calculated (1 to 2 months)" },
+            {
+              value: "long",
+              text: "Long-term / Mega Project (More than 2 months)",
+            },
+            {
+              value: "flexible",
+              text: "Flexible (As per engineering team analysis)",
+            },
+          ],
+        },
+      };
+
+      function populateDropdowns(lang) {
+        const serviceSelect = document.getElementById("form-select-service");
+        const durationSelect = document.getElementById("form-select-duration");
+
+        if (!serviceSelect || !durationSelect) return;
+
+        serviceSelect.innerHTML = "";
+        dropdownOptions[lang].services.forEach((opt) => {
+          let o = document.createElement("option");
+          o.value = opt.value;
+          o.textContent = opt.text;
+          serviceSelect.appendChild(o);
+        });
+
+        durationSelect.innerHTML = "";
+        dropdownOptions[lang].durations.forEach((opt) => {
+          let o = document.createElement("option");
+          o.value = opt.value;
+          o.textContent = opt.text;
+          if (opt.disabled) o.disabled = true;
+          if (opt.selected) o.selected = true;
+          durationSelect.appendChild(o);
+        });
+
+        document.getElementById("form-input-name").placeholder =
+          translations[lang]["ph-name"];
+        document.getElementById("form-input-details").placeholder =
+          translations[lang]["ph-details"];
+      }
+
+      function toggleLanguage() {
+        currentLang = currentLang === "ar" ? "en" : "ar";
+        const html = document.documentElement;
+        const sidebar = document.getElementById("main-sidebar");
+        const nav = document.getElementById("sidebar-nav");
+        const heroBtnIcon = document.getElementById("hero-btn-icon");
+        const indicatorText = document.getElementById("lang-indicator-text");
+        const openBtn = document.getElementById("open-sidebar-btn");
+
+        if (currentLang === "en") {
+          html.setAttribute("lang", "en");
+          html.setAttribute("dir", "ltr");
+          indicatorText.textContent = "العربية";
+
+          sidebar.classList.remove("border-l", "right-0");
+          sidebar.classList.add("border-r", "left-0");
+          nav.classList.remove("text-right");
+          nav.classList.add("text-left");
+
+          openBtn.classList.remove("right-5");
+          openBtn.classList.add("left-5");
+
+          if (heroBtnIcon) {
+            heroBtnIcon.classList.remove("fa-solid", "fa-arrow-left");
+            heroBtnIcon.classList.add("fa-solid", "fa-arrow-right");
+          }
+        } else {
+          html.setAttribute("lang", "ar");
+          html.setAttribute("dir", "rtl");
+          indicatorText.textContent = "English";
+
+          sidebar.classList.remove("border-r", "left-0");
+          sidebar.classList.add("border-l", "right-0");
+          nav.classList.remove("text-left");
+          nav.classList.add("text-right");
+
+          openBtn.classList.remove("left-5");
+          openBtn.classList.add("right-5");
+
+          if (heroBtnIcon) {
+            heroBtnIcon.classList.remove("fa-solid", "fa-arrow-right");
+            heroBtnIcon.classList.add("fa-solid", "fa-arrow-left");
+          }
+        }
+
+        document.querySelectorAll("[data-key]").forEach((elem) => {
+          const key = elem.getAttribute("data-key");
+          if (translations[currentLang][key]) {
+            elem.innerHTML = translations[currentLang][key];
+          }
+        });
+
+        document.getElementById("hero-title").innerHTML =
+          translations[currentLang]["hero-title"];
+        document.getElementById("footer-copy").innerHTML =
+          translations[currentLang]["footer-copy"];
+
+        populateDropdowns(currentLang);
+
+        // تم استبدال الكود القديم المسبب للمشكلة باستدعاء البنية المستقرة مباشرة هنا
+        initResponsiveBehavior();
+      }
       function initResponsiveBehavior() {
         const sidebar = document.getElementById("main-sidebar");
         const mainContent = document.getElementById("main-content");
         const arrowIcon = document.getElementById("arrow-icon");
         const overlay = document.getElementById("sidebar-overlay");
+        const openBtn = document.getElementById("open-sidebar-btn");
+
+        // تنظيف كامل لأي كلاسات إزاحة وهوامش سابقة تمنع الاختفاء السلس
+        sidebar.classList.remove(
+          "translate-x-full",
+          "-translate-x-full",
+          "translate-x-0",
+        );
+        mainContent.classList.remove("md:mr-80", "md:ml-80", "mr-0", "ml-0");
 
         if (window.innerWidth < 768) {
-          sidebar.classList.add("translate-x-full");
-          mainContent.classList.remove("md:mr-80");
-          mainContent.classList.add("mr-0");
-          arrowIcon.style.transform = "rotate(180deg)"; // السهم يلتف ليشير إلى الداخل للفتح
+          sidebar.classList.add(
+            currentLang === "ar" ? "translate-x-full" : "-translate-x-full",
+          );
+          mainContent.classList.add("mr-0", "ml-0");
+          arrowIcon.style.transform =
+            currentLang === "ar" ? "rotate(0deg)" : "rotate(180deg)";
           overlay.classList.add("hidden");
+          openBtn.classList.remove("hidden");
+          openBtn.classList.add("flex");
           isMenuOpen = false;
         } else {
-          sidebar.classList.remove("translate-x-full");
-          mainContent.classList.add("md:mr-80");
-          mainContent.classList.remove("mr-0");
-          arrowIcon.style.transform = "rotate(0deg)"; // السهم يشير إلى اليمين للإغلاق
+          openBtn.classList.add("hidden");
+          openBtn.classList.remove("flex");
+
+          if (isMenuOpen) {
+            sidebar.classList.add("translate-x-0");
+            if (currentLang === "ar") {
+              mainContent.classList.add("md:mr-80");
+              arrowIcon.style.transform = "rotate(180deg)";
+            } else {
+              mainContent.classList.add("md:ml-80");
+              arrowIcon.style.transform = "rotate(0deg)";
+            }
+          } else {
+            sidebar.classList.add(
+              currentLang === "ar" ? "translate-x-full" : "-translate-x-full",
+            );
+            mainContent.classList.add("mr-0", "ml-0");
+            arrowIcon.style.transform =
+              currentLang === "ar" ? "rotate(0deg)" : "rotate(180deg)";
+            openBtn.classList.remove("hidden");
+            openBtn.classList.add("flex");
+          }
           overlay.classList.add("hidden");
-          isMenuOpen = true;
         }
       }
 
       function toggleMenu() {
-        const sidebar = document.getElementById("main-sidebar");
-        const mainContent = document.getElementById("main-content");
-        const arrowIcon = document.getElementById("arrow-icon");
-        const overlay = document.getElementById("sidebar-overlay");
-
-        if (isMenuOpen) {
-          sidebar.classList.add("translate-x-full");
-          mainContent.classList.remove("md:mr-80");
-          mainContent.classList.add("mr-0");
-          arrowIcon.style.transform = "rotate(180deg)";
-          overlay.classList.add("hidden");
-          isMenuOpen = false;
-        } else {
-          sidebar.classList.remove("translate-x-full");
-          if (window.innerWidth >= 768) {
-            mainContent.classList.add("md:mr-80");
-            mainContent.classList.remove("mr-0");
-          } else {
-            overlay.classList.remove("hidden");
-          }
-          arrowIcon.style.transform = "rotate(0deg)";
-          isMenuOpen = true;
-        }
+        isMenuOpen = !isMenuOpen;
+        initResponsiveBehavior();
       }
 
       function switchPage(pageId) {
-        // إخفاء كافة الأقسام النشطة
         const sections = document.querySelectorAll(".page-section");
         sections.forEach((section) => section.classList.remove("active"));
 
-        // تشغيل القسم المطلوب وتنشيطه
         const activeSection = document.getElementById(pageId);
         if (activeSection) {
           activeSection.classList.add("active");
         }
 
-        // معالجة وإعادة ضبط تأثيرات الأزرار النشطة وغير النشطة
         const buttons = document.querySelectorAll(".nav-btn");
         buttons.forEach((btn) => {
           btn.classList.remove(
@@ -848,6 +1278,7 @@
             "from-sky-500/10",
             "to-transparent",
             "border-r-4",
+            "border-l-4",
             "border-sky-400",
             "text-white",
           );
@@ -855,42 +1286,47 @@
 
         const currentBtn = document.getElementById(`btn-${pageId}`);
         if (currentBtn) {
-          currentBtn.classList.add(
-            "bg-gradient-to-l",
-            "from-sky-500/10",
-            "to-transparent",
-            "border-r-4",
-            "border-sky-400",
-            "text-white",
-          );
+          if (currentLang === "ar") {
+            currentBtn.classList.add(
+              "bg-gradient-to-l",
+              "from-sky-500/10",
+              "to-transparent",
+              "border-r-4",
+              "border-sky-400",
+              "text-white",
+            );
+          } else {
+            currentBtn.classList.add(
+              "bg-gradient-to-r",
+              "from-sky-500/10",
+              "to-transparent",
+              "border-l-4",
+              "border-sky-400",
+              "text-white",
+            );
+          }
         }
 
-        // إذا كنا على الجوال، نغلق القائمة تلقائياً بعد الاختيار لمشاهدة المحتوى فوراً
         if (window.innerWidth < 768) {
           toggleMenu();
         }
 
-        // تمرير سلس ومريح لقمة الصفحة الجديدة
         window.scrollTo({ top: 0, behavior: "smooth" });
       }
 
       function handleSubmit(event) {
         event.preventDefault();
-        alert(
-          "تم استلام تفاصيل مشروعك والمدة الزمنية المطلوبة بنجاح! سيقوم فريق Horizon Optics الهندسية والتقنية بمراجعة المتطلبات والتواصل معك خلال 24 ساعة للبدء بالتنفيذ.",
-        );
+        alert(translations[currentLang]["alert-success"]);
         event.target.reset();
       }
 
-      // تفعيل السلوك الذكي المستجيب فور تحميل الصفحة وعند تغيير أبعاد الشاشة
-      window.addEventListener("DOMContentLoaded", initResponsiveBehavior);
+      window.addEventListener("DOMContentLoaded", () => {
+        populateDropdowns("ar");
+        initResponsiveBehavior();
+      });
+
       window.addEventListener("resize", function () {
-        if (
-          (window.innerWidth >= 768 && !isMenuOpen) ||
-          (window.innerWidth < 768 && isMenuOpen)
-        ) {
-          initResponsiveBehavior();
-        }
+        initResponsiveBehavior();
       });
     </script>
   </body>
