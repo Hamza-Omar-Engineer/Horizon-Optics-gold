@@ -2,7 +2,7 @@
 // Horizon Optics - Gemini Chatbot
 // ضع API Key هنا فقط - لا تشاركه مع أحد
 // ====================================
-const GEMINI_API_KEY = "AQ.Ab8RN6JgL5fDY3hfmZbduzALnhbZj4EJLmia5BWBoaSRF70gKQ";
+const GEMINI_API_KEY = "AQ.Ab8RN6La8aHOyzKESmnjKtiJ7DNpXcPUYrswqKAhFhqJohSs0A";
 
 const SYSTEM_PROMPT = `أنت مساعد ذكي لشركة Horizon Optics (HO)، شركة متخصصة في البرمجة والتصميم.
 
