@@ -214,22 +214,37 @@ function createChatbot() {
     sendMessage();
   };
 
-  async function sendMessage() {
-    const text = input.value.trim();
-    if (!text) return;
-    input.value = "";
-    addMessage(text, "user");
+ async function sendToGemini(userMessage) {
+  conversationHistory.push({
+    role: "user",
+    parts: [{ text: userMessage }]
+  });
 
-    const typing = addMessage("جاري الكتابة...", "bot typing");
-    try {
-      const reply = await sendToGemini(text);
-      typing.remove();
-      addMessage(reply, "bot");
-    } catch (e) {
-      typing.remove();
-      addMessage("عذراً، حدث خطأ. حاول مرة أخرى.", "bot");
+  const response = await fetch(
+    "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent",
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "x-goog-api-key": GEMINI_API_KEY
+      },
+      body: JSON.stringify({
+        system_instruction: { parts: [{ text: SYSTEM_PROMPT }] },
+        contents: conversationHistory
+      })
     }
-  }
+  );
+
+  const data = await response.json();
+  const reply = data.candidates?.[0]?.content?.parts?.[0]?.text || "عذراً، حدث خطأ.";
+
+  conversationHistory.push({
+    role: "model",
+    parts: [{ text: reply }]
+  });
+
+  return reply;
+}
 
   sendBtn.onclick = sendMessage;
   input.addEventListener("keydown", (e) => {
